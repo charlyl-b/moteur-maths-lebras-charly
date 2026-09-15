@@ -4,6 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+using ScreenPoint = std::pair<int, int>;
+using WorldPoint = std::pair<double, double>;
+
+
 class GameWindow
 {
 public:
@@ -23,6 +27,9 @@ private:
 
     void processEvents();
     void render();
+
+    ScreenPoint toScreen(const WorldPoint &point);
+
 };
 
 #endif

@@ -62,3 +62,11 @@ void GameWindow::render()
 
     _window.display();
 }
+
+ScreenPoint GameWindow::toScreen(const WorldPoint& point) {
+    const unsigned int screenX = _window.getSize().x;
+    const unsigned int screenY = _window.getSize().y;
+
+    int X = screenX / 2 + (point.first * ???)
+
+}
