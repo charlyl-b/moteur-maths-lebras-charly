@@ -56,9 +56,26 @@ void GameWindow::render()
 
     sf::CircleShape circle(radius);
     circle.setFillColor(sf::Color::Yellow);
-    circle.setPosition(100 - radius, 100 - radius);
+    //ScreenPoint pos = toScreen(WorldPoint(0, 0));
+    //ScreenPoint pos = toScreen(WorldPoint(5, 0));
+    //ScreenPoint pos = toScreen(WorldPoint(0, -5));
+    ScreenPoint pos = toScreen(WorldPoint(-5.2, 7.9));
+    circle.setPosition(pos.first - radius, pos.second - radius);
 
     _window.draw(circle);
+
+#ifdef _DEBUG
+    ScreenPoint center = toScreen(WorldPoint(0, 0));
+    sf::RectangleShape x(sf::Vector2f(_window.getSize().x, 1));
+    x.setPosition(0, center.second);
+    x.setFillColor(sf::Color::Red);
+    _window.draw(x);
+
+    sf::RectangleShape y(sf::Vector2f( 1,_window.getSize().y));
+    y.setPosition(center.first, 0);
+    y.setFillColor(sf::Color::Green);
+    _window.draw(y);
+#endif
 
     _window.display();
 }
@@ -67,6 +84,19 @@ ScreenPoint GameWindow::toScreen(const WorldPoint& point) {
     const unsigned int screenX = _window.getSize().x;
     const unsigned int screenY = _window.getSize().y;
 
-    int X = screenX / 2 + (point.first * ???)
+    int X = screenX / 2 + (point.first * 30);
+    int Y = screenY / 2 - (point.second * 30);
+
+    return ScreenPoint(X, Y);
+}
+
+WorldPoint GameWindow::toPhysical(const ScreenPoint& point) {
+    const unsigned int screenX = _window.getSize().x;
+    const unsigned int screenY = _window.getSize().y;
+
+    double x = (point.first -(screenX / 2)) / 30;
+    double y = ((screenY / 2) - point.second) / 30;
+
+    return WorldPoint(x, y);
 
 }

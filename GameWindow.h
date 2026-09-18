@@ -29,6 +29,7 @@ private:
     void render();
 
     ScreenPoint toScreen(const WorldPoint &point);
+    WorldPoint toPhysical(const ScreenPoint &point);
 
 };
 
