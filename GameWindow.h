@@ -25,6 +25,9 @@ public:
 private:
     sf::RenderWindow _window;
 
+    double playerPosX = 0;
+    double playerPosY = 0;
+
     void processEvents();
     void render();
 

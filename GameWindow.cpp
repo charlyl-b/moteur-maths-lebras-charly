@@ -28,19 +28,19 @@ void GameWindow::processEvents()
         {
             if (event.key.code == sf::Keyboard::Left)
             {
-                // Left key pressed.
+                playerPosX -= 1;
             }
             else if (event.key.code == sf::Keyboard::Right)
             {
-                // Right key pressed.
+                playerPosX += 1;
             }
             else if (event.key.code == sf::Keyboard::Up)
             {
-                // Up key pressed.
+                playerPosY += 1;
             }
             else if (event.key.code == sf::Keyboard::Down)
             {
-                // Down key pressed.
+                playerPosY -= 1;
             }
         }
     }
@@ -59,7 +59,7 @@ void GameWindow::render()
     //ScreenPoint pos = toScreen(WorldPoint(0, 0));
     //ScreenPoint pos = toScreen(WorldPoint(5, 0));
     //ScreenPoint pos = toScreen(WorldPoint(0, -5));
-    ScreenPoint pos = toScreen(WorldPoint(-5.2, 7.9));
+    ScreenPoint pos = toScreen(WorldPoint(playerPosX, playerPosY));
     circle.setPosition(pos.first - radius, pos.second - radius);
 
     _window.draw(circle);

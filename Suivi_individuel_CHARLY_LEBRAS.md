@@ -75,3 +75,10 @@ circle.setPosition(pos.first - radius, pos.second - radius);
 Pour se repérer, j’ai affiché les axes x et y avec une section \_DEBUG. Pour faire cela, j’ai dessiné des rectangles de la même manière que le cercle du joueur.
 
 Séance du 18/09/2026 - 16H00 à 17H00
+
+J’ai réalisé la première version simple du déplacement du joueur.
+
+Que se passe-t-il lorsque plusieurs touches directionnelles sont maintenues simulta-
+nément ? Le comportement obtenu vous paraît-il satisfaisant ?
+Quand on appuie sur deux touches à la fois, le comportement n’est pas celui attendu.
+Par exemple, quand on appuie sur bas et gauche, on s’attend à ce que le joueur parte en diagonal. Sauf qu’avec cette méthode, le joueur suit la direction du dernier input enclenché, donc si c’est l’input gauche, le joueur part à gauche. C’est problématique car ce n’est pas intuitif. Même chose si le joueur appuie sur deux directions opposés : elles sont censées s’annuler (et donc le joueur devient immobile), mais ce n’est pas le cas avec cette méthode.
