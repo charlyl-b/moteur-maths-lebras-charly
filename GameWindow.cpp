@@ -7,11 +7,15 @@ GameWindow::GameWindow()
 void GameWindow::show(int width, int height, const std::string& title)
 {
     _window.create(sf::VideoMode(width, height), title);
-
+    _window.setFramerateLimit(50);
     while (_window.isOpen())
     {
-        processEvents();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) playerPosX -= 0.2;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playerPosX += 0.2;
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))playerPosY += 0.2;
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playerPosY -= 0.2;
         render();
+        processEvents();
     }
 }
 
@@ -23,26 +27,6 @@ void GameWindow::processEvents()
     {
         if (event.type == sf::Event::Closed)
             _window.close();
-
-        if (event.type == sf::Event::KeyPressed)
-        {
-            if (event.key.code == sf::Keyboard::Left)
-            {
-                playerPosX -= 1;
-            }
-            else if (event.key.code == sf::Keyboard::Right)
-            {
-                playerPosX += 1;
-            }
-            else if (event.key.code == sf::Keyboard::Up)
-            {
-                playerPosY += 1;
-            }
-            else if (event.key.code == sf::Keyboard::Down)
-            {
-                playerPosY -= 1;
-            }
-        }
     }
 }
 

@@ -82,3 +82,13 @@ Que se passe-t-il lorsque plusieurs touches directionnelles sont maintenues simu
 nément ? Le comportement obtenu vous paraît-il satisfaisant ?
 Quand on appuie sur deux touches à la fois, le comportement n’est pas celui attendu.
 Par exemple, quand on appuie sur bas et gauche, on s’attend à ce que le joueur parte en diagonal. Sauf qu’avec cette méthode, le joueur suit la direction du dernier input enclenché, donc si c’est l’input gauche, le joueur part à gauche. C’est problématique car ce n’est pas intuitif. Même chose si le joueur appuie sur deux directions opposés : elles sont censées s’annuler (et donc le joueur devient immobile), mais ce n’est pas le cas avec cette méthode.
+
+Séance du 23/09/2026 - 10H30 à 12H30
+
+Dans le code fourni initialement la fonction update() est appelée avec une vitesse
+de l’ordre de 50 FPS (frames per second). Voyez-vous dans le code où est appelée cette fonction ? et où est défini le taux de 50 FPS ?
+
+Dans le code fourni pour le SFML, il n’y a pas de fonction update(), mais une fonction show(). Elle crée la fenêtre, puis passe dans une boucle while qui s'exécute tant que la fenêtre \_window est ouverte. Il est possible de paramétrer un taux limite de FPS, avec la méthode SetFramerateLimit() de la classe sf::RenderWindow.
+
+La seconde version du déplacement du joueur vient d’être terminée.
+J’ai eu quelques soucis de compilation / exécution externe au code. Les modifications de code n’étaient pas prises en compte. J’ai donc tourné en rond pendant presque 45 minutes en ne voyant aucune différence sur les déplacements du joueur. C’est en relançant Visual Studio que le bug est parti, sans que je sache d’où il provenait.
