@@ -92,3 +92,27 @@ Dans le code fourni pour le SFML, il n’y a pas de fonction update(), mais une 
 
 La seconde version du déplacement du joueur vient d’être terminée.
 J’ai eu quelques soucis de compilation / exécution externe au code. Les modifications de code n’étaient pas prises en compte. J’ai donc tourné en rond pendant presque 45 minutes en ne voyant aucune différence sur les déplacements du joueur. C’est en relançant Visual Studio que le bug est parti, sans que je sache d’où il provenait.
+
+Séance du 24/09/2026 - 8H15 à 10H15
+
+(1) Pour la fonction affichée sur la figure 2, calculez une approximation discrète de la
+dérivée pour les points tn, puis tn+1. Vous pouvez considérer que les pas de grille valent une unité.
+
+La formule P’(t) =( P(n+1) - P(n) ) / ( t(n+1) - t(n) )
+P’(tn) = ( P(n+1) - P(n) ) / 1 = P(n+1) - P(n)
+P’(tn+1) = ( P(n+1) - P(n) ) / 1 = P(n+1) - P(n)
+
+(2) On souhaite résoudre l’équation proposée ci-dessous. Déterminez la solution de cette équation (en considérant P(0) = 0), à l’aide de vos cours de maths des années précédentes.
+
+P’(t) = 2
+⇔ P(t) = 2t
+
+(3) Approximez cette équation en remplaçant la dérivée continue par la dérivée discrète, en utilisant un pas de temps ∆t (vous pouvez prendre 1 seconde). Établir la relation de récurrence entre Pn+1 et Pn : quel type de suite obtenez-vous ?
+
+P’(t) = 2
+⇔ ( P(n+1) - P(n) ) / ∆t = 2
+⇔ P(n+1) - P(n) = 2 \* ∆t
+⇔ P(n+1) = 2∆t + P(n)
+⇔ P(n+1) = P(n) + 2 (si on estime que ∆t = 1)
+
+On obtient une suite arithmétique de raison 2
