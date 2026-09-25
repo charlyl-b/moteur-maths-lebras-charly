@@ -116,3 +116,35 @@ P’(t) = 2
 ⇔ P(n+1) = P(n) + 2 (si on estime que ∆t = 1)
 
 On obtient une suite arithmétique de raison 2
+
+Séance du 25/09/2026 - 9H15 à 12H30
+
+(1) Montrez que la solution proposée ci-dessus est bien solution de l’équation différentielle
+proposée.
+
+v(t) = G/k + A \* e^(-t/τ)
+
+dv/dt = -A/τ * e^(-t/τ) = -(A*k/m) \* e^(-t/τ)
+
+m _ dv/dt = m _ ( -(A*k/m) * e^(-t/τ) ) = -A*k * e^(-t/τ)
+
+G - k*v = G - k*( G/k + A*e^(-t/τ) )
+= G - G - k*A*e^(-t/τ)
+= -k*A \* e^(-t/τ)
+
+m*dv/dt = -A*k*e^(-t/τ) = G - k*v
+
+(2) Déterminez la constante A de la solution donnée.
+v(0) = G/k + A
+v0 = G/k + A
+⇔ - (G/k) + v0 = A
+
+(3) Tracez la solution dans un tableur pour une masse de 1208 kg et un coefficient de
+frottement de 1, 8 USI. Vous pouvez prendre une vitesse initiale de 0 m.s−1 et une propulsion de 100 m.s−2
+(4) Vers quelle vitesse se stabilise le joueur, d’après la forme de la solution ? de la courbe tracée ? cette vitesse d’équilibre vous semble-t-elle cohérente ?
+Quand t devient très grand, le joueur se stabilise à une vitesse limite égale à G/k. C’est cohérent car à cette vitesse la propulsion et le frottement se compense, donc le joueur n’accélère plus. On remarque sur la courbe une asymptote horizontale autour de 55m/s.
+
+(5) Rajoutez une seconde courbe avec un coefficient de frottement de 0, 65 SI (joueur au profil aérodynamique plus performant). Comment la forme de la courbe est-elle modifiée ? (vitesse à l’équilibre, variation de la vitesse)
+Quand le coefficient de frottement est à 0.65, le joueur monte plus vite en vitesse au début, et se stabilise un peu plus haut (150m/s). C’est aussi cohérent car si le joueur est moins freiné par l’air, alors il peut accélérer davantage avant que le frottement se rapproche de la propulsion du joueur.
+
+(6) Le coefficient τ est appelé temps caractéristique : que se passe-t-il à ce temps pour les 2 cas étudiés ? pour la solution théorique ?
