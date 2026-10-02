@@ -147,4 +147,54 @@ Quand t devient très grand, le joueur se stabilise à une vitesse limite égale
 (5) Rajoutez une seconde courbe avec un coefficient de frottement de 0, 65 SI (joueur au profil aérodynamique plus performant). Comment la forme de la courbe est-elle modifiée ? (vitesse à l’équilibre, variation de la vitesse)
 Quand le coefficient de frottement est à 0.65, le joueur monte plus vite en vitesse au début, et se stabilise un peu plus haut (150m/s). C’est aussi cohérent car si le joueur est moins freiné par l’air, alors il peut accélérer davantage avant que le frottement se rapproche de la propulsion du joueur.
 
+Séance du 02/10/2026 - 9H15 à 10H15
+
 (6) Le coefficient τ est appelé temps caractéristique : que se passe-t-il à ce temps pour les 2 cas étudiés ? pour la solution théorique ?
+
+à t = τ, le joueur a atteint environ 63% de sa vitesse d’équilibre, dans les deux cas.
+Pour le premier cas (k=1,8), τ vaut environ 671s et le joueur est alors à peu près à 35m/s.
+Pour le second cas (k=0,65), τ vaut environ 1858s, et le joueur est à peu près à 97m/s.
+Donc même si le joueur avec moins de frottement va plus vite, il met aussi beaucoup plus de temps à se stabiliser.
+
+(1) Que devient l’équation différentielle de l’évolution de la vitesse du joueur, une fois
+appliquée la méthode d’Euler ?
+
+m * dv/dt = G - k*v
+⇔ dv/dt = (v(n+1) - v(n)) / ∆t
+⇔ m * (v(n+1) - v(n) ) / ∆t = G - k*v(n)
+
+(2) Établir une relation de récurrence de la forme vn+1 = a × vn + b.
+
+m * (v(n+1) - v(n) ) / ∆t = G - k*v(n)
+⇔ m * (v(n+1) - v(n) ) = (G - k*v(n)) * ∆t
+⇔ v(n+1) - v(n) = ((G - k*v(n)) * ∆t) / m
+⇔ v(n+1) = v(n) + (((G - k*v(n)) * ∆t) / m)
+⇔ v(n+1) = v(n) + (G*∆t / m) - ( k*v(n)*∆t / m)
+⇔ v(n+1) = (1 - (k∆t / m)) \* v(n) + (G∆t / m)
+
+(3) Quel est le type de cette suite numérique ? Déterminez une expression de cette suite,
+sans relation de récurrence (i.e. exprimez vn en fonction de m, k, G, ∆t et v0).
+
+v(n+1) = a\*v(n) + b, avec a = 1 - k∆t/m et b= G∆t/m
+
+Point fixe : v* = a*v* + b
+⇔ v* = b(1-a) -( G∆t/m) / (k∆t) = G/k
+
+On pose w(n) = v(n) - v*, alors w(n+1) = a*w(n). C’est une suite géométrique de raison a.
+Donc w(n) = w(0) \* a^n
+
+v(n) = G/k +(v(0) - G/k) \* (1 - k∆t/m)^n
+
+C’est une suite arithmético-géométrique.
+
+(5) Réduisez le pas de temps à une valeur de 10 secondes : que constatez-vous ?
+
+Avec ∆t = 10s, la suite converge vers la vitesse d’équilibre G/k, avec des points beaucoup plus rapprochée sur la courbe.
+
+La courbe discrète colle presque à la courbe continue, donc plus précis.car le pas de temps est plus petit.
+
+(6) Augmentez le pas de temps à une valeur de 1000 secondes, puis 1500 secondes : que constatez-vous ?
+
+Avec ∆t = 1000s, la suite varie autour de la vitesse d’équilibre, mais converge quand même vers G/k au bout d’un moment.
+
+Avec ∆t = 1500s, a> 1, donc la suite diverge

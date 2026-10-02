@@ -28,6 +28,10 @@ private:
     double playerPosX = 0;
     double playerPosY = 0;
 
+
+    double previousPlayerPosX = 0;
+    double previousPlayerPosY = 0;
+
     void processEvents();
     void render();
 

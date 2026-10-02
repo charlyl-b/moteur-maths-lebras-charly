@@ -10,10 +10,12 @@ void GameWindow::show(int width, int height, const std::string& title)
     _window.setFramerateLimit(50);
     while (_window.isOpen())
     {
+        previousPlayerPosX = playerPosX;
+        previousPlayerPosY = playerPosY;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) playerPosX -= 0.2;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playerPosX += 0.2;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))playerPosY += 0.2;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playerPosY -= 0.2;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))playerPosY += 0.2;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playerPosY -= 0.2;
         render();
         processEvents();
     }
@@ -59,6 +61,26 @@ void GameWindow::render()
     y.setPosition(center.first, 0);
     y.setFillColor(sf::Color::Green);
     _window.draw(y);
+
+
+    double dt = 1.0 / 50.0;
+    double vx = (playerPosX - previousPlayerPosX) / dt;
+    double vy = (playerPosY - previousPlayerPosY) / dt;
+
+    static sf::Font font;
+    static bool fontLoaded = font.loadFromFile("C:/Windows/Fonts/arial.ttf");
+
+    if (fontLoaded)
+    {
+        sf::Text speedText;
+        speedText.setFont(font);
+        speedText.setCharacterSize(16);
+        speedText.setFillColor(sf::Color::Black);
+        speedText.setString("vx = " + std::to_string(vx) + " vy = " + std::to_string(vy));
+        speedText.setPosition(10, 10);
+        _window.draw(speedText);
+    }
+
 #endif
 
     _window.display();
