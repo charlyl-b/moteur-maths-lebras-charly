@@ -198,3 +198,34 @@ La courbe discrète colle presque à la courbe continue, donc plus précis.car l
 Avec ∆t = 1000s, la suite varie autour de la vitesse d’équilibre, mais converge quand même vers G/k au bout d’un moment.
 
 Avec ∆t = 1500s, a> 1, donc la suite diverge
+
+Séance du 02/11/2026 - 8H15 à 10H15
+
+(1) On note vx,n la vitesse du joueur à l’itération n, dans la direction x. A partir de la
+loi de Newton appliquée dans la direction des x, exprimez vx,n+1 en fonction de m, vx,n,
+Fx et ∆t.
+
+m _ (vx(n+1) - vn(n)) / ∆t = Fx
+⇔ vx(n+1) - vx(n) = (Fx _ ∆t) / m
+⇔ vx(n+1) = vx(n) + (Fx \* ∆t) / m
+
+(2) Faites de même pour la vitesse selon la direction y.
+
+m _ (vy(n+1) - vn(n)) / ∆t = Fy
+⇔ vy(n+1) - vy(n) = (Fy _ ∆t) / m
+⇔ vy(n+1) = vy(n) + (Fy \* ∆t) / m
+
+(6) On souhaite déterminer l’évolution de la position du joueur (et pas uniquement sa
+vitesse).Si l’on note xn la position du joueur, selon l’axe x, à l’itération n, appliquez la méthode d’Euler à la première relation pour déterminer la relation entre xn+1 et xn.
+
+vx = dx/dt
+⇔ (x(n+1) - x(n)) / ∆t = vx(n)
+⇔ x(n+1) - x(n) = vx(n) _ ∆t
+⇔ x(n+1) = x(n) + vx(n) _ ∆t
+
+(7) Faites de même pour yn+1 en fonction de yn.
+
+vy = dy/dt
+⇔ (y(n+1) - y(n)) / ∆t = vy(n)
+⇔ y(n+1) - y(n) = vy(n) _ ∆t
+⇔ y(n+1) = y(n) + vy(n) _ ∆t

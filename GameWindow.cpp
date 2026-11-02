@@ -16,6 +16,12 @@ void GameWindow::show(int width, int height, const std::string& title)
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playerPosX += 0.2;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))playerPosY += 0.2;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playerPosY -= 0.2;
+
+        playerPosX = playerPosX + playerSpeedX * dt;
+        playerPosY = playerPosY + playerSpeedY * dt;
+
+        playerSpeedX = playerSpeedX + (F_x() * dt) / playerMass;
+        playerSpeedY = playerSpeedY + (F_y() * dt) / playerMass;
         render();
         processEvents();
     }
@@ -105,4 +111,12 @@ WorldPoint GameWindow::toPhysical(const ScreenPoint& point) {
 
     return WorldPoint(x, y);
 
+}
+
+double GameWindow::F_x() const {
+    return 0;
+}
+
+double GameWindow::F_y() const {
+    return -10;
 }

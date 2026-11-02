@@ -28,15 +28,22 @@ private:
     double playerPosX = 0;
     double playerPosY = 0;
 
-
     double previousPlayerPosX = 0;
     double previousPlayerPosY = 0;
+
+    double playerSpeedX = 0;
+    double playerSpeedY = 0;
+    double playerMass = 1;
+    const double dt = 1.0 / 50.0;
 
     void processEvents();
     void render();
 
     ScreenPoint toScreen(const WorldPoint &point);
     WorldPoint toPhysical(const ScreenPoint &point);
+
+    double F_x() const;
+    double F_y() const;
 
 };
 
