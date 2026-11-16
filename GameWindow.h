@@ -36,6 +36,11 @@ private:
     double playerMass = 1;
     const double dt = 1.0 / 50.0;
 
+    const double propulsion = 100;
+
+    const double friction = 1;
+    double speed() const;
+
     void processEvents();
     void render();
 

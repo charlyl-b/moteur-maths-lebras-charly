@@ -114,9 +114,27 @@ WorldPoint GameWindow::toPhysical(const ScreenPoint& point) {
 }
 
 double GameWindow::F_x() const {
-    return 0;
+    double f = 0;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) f -= propulsion;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) f += propulsion;
+
+    double v = speed();
+    if (v > 0)
+        f -= friction * v * v * (playerSpeedX / v);
+    return f;
 }
 
 double GameWindow::F_y() const {
-    return -10;
+    double f = -5;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) f += propulsion;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) f -= propulsion;
+    
+    double v = speed();
+    if (v > 0)
+        f -= friction * v * v * (playerSpeedY / v);
+    return f;
+}
+
+double GameWindow::speed() const {
+    return std::sqrt(playerSpeedX * playerSpeedX + playerSpeedY * playerSpeedY);
 }
